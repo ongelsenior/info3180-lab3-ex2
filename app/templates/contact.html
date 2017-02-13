@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block main %}
+<div class='line'>
+    <h1>Contact Form</h1>
+</div>
+<div class="container">
+    {% with messages= get_flashed_messages() %}
+    {% if message %}
+    <div class= "alert alert-danger">
+        <ul>
+            {% for message in messages %}
+                <li>{{message}}</li>
+            {% endfor%}
+        </ul>  
+    </div>
+        {% endif %}
+    {% endwith %}
+</div>
+<div>
+    <p>Fill in this form to contact the site owners.</p>
+
+<form method= "POST" action="{{ url_for('contact') }}">
+  <b>Name</b><em class='red'>(Required)</em><br><br>
+  Please enter your full name.<br><br>
+  <input type="text" name="name"><br><br>
+  <b>E-mail</b><em class='red'>(Required)</em><br><br>
+  Please enter your e-mail address.<br><br>
+  <input type="email" name="email"><br><br>
+  <b>Subject</b><em class='red'>(Required)</em><br><br>
+  Please enter the subject: for your message.<br><br>
+  <input type="text" name="subject"><br><br>
+  <b>Message</b><em class='red'>(Required)</em><br><br>
+  Please enter the message you would like to send.<br><br>
+  <textarea name="message" rows="6" cols="50">
+  </textarea><br><br>
+  <button type="button" value="send">Send</button>
+</form>
+    
+</div>
+{% endblock %}
